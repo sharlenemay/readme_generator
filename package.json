@@ -1,15 +1,22 @@
 {
-  "name": "static-site",
+  "name": "readme_generator",
   "version": "1.0.0",
-  "description": "",
+  "description": "[object Object]",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sharlenemay/readme_generator.git"
+  },
   "author": "",
   "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sharlenemay/readme_generator/issues"
+  },
+  "homepage": "https://github.com/sharlenemay/readme_generator#readme",
   "dependencies": {
-    "dotenv": "^8.0.0",
-    "inquirer": "^6.3.1"
+    "inquirer": "^7.1.0"
   }
 }
