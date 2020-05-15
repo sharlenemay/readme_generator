@@ -1,5 +1,5 @@
 const fs = require ("fs");
-// const axios = require("axios");
+const axios = require("axios");
 const inquirer = require("inquirer");
 
 const questions = [
@@ -14,7 +14,8 @@ const questions = [
         message: "What is your license?",
         name: "license",
         choices: [
-            "ISC"
+            "ISC",
+            "MIT"
         ]
     },
     {
@@ -54,32 +55,47 @@ const questions = [
     }
 ];
 
+let avatar = ""
+
 function init() {
     inquirer.prompt(questions)
     .then( response => {
-        const info = generateReadMe(response)
+
+        const queryUrl = `https://api.github.com/users/${response.username}`;
+        console.log(queryUrl);
+        axios.get(queryUrl)
+        .then(function(res){
+            avatar = res.data.avatar_url;
+
+            console.log(avatar);
+        });
+
+        const info = generateReadMe(response, avatar)
             fs.writeFileSync("README.md",info);
+        
     });
+    
 }
 
-function generateReadMe(data) {
+
+function generateReadMe(data, avatar) {
+    
     return `
   
   [![License: ${data.license}](https://img.shields.io/badge/License-${data.license}-blue.svg)](https://opensource.org/licenses/${data.license})
   # ${data.title}
-  
   
   ## Description
   
   ${data.description}
   
   ## Table of Contents
-  *[Installation](#installation)
-  *[Usage](#usage)
-  *[License](#license)
-  *[Contributing](#contributing)
-  *[Tests](#tests)
-  *[Questions](#questions)
+  * [Installation](#installation)
+  * [Usage](#usage)
+  * [License](#license)
+  * [Contributing](#contributing)
+  * [Tests](#tests)
+  * [Questions](#questions)
   
   ## Installation
   
@@ -104,6 +120,8 @@ function generateReadMe(data) {
   ## Questions
   
   Please contact ${data.username} at ${data.email} for questions. 
+
+  (${avatar})
   
   `
   }
@@ -112,24 +130,3 @@ init();
 
     // contributing: languages used, frameworks used, any knowledge necessary for contribution by another user
     // tests: npm test
-
-    // (function({ username }) {
-    //     const queryUrl = `https://api.github.com/users/${username}/repos?per_page=100`;
-    
-    //     axios.get(queryUrl)
-    //     .then(function(res){
-    //         const repoNames = res.data.map(function(repo){
-    //             return repo.name;
-    //         });
-    
-    //         const repoNamesStr = repoNames.join("\n");
-    
-    //         fs.writeFile("repos.text", repoNamesStr, function(err){
-    //             if (err) {
-    //                 throw err;
-    //             }
-    
-    //             console.log(`Saved ${repoNames.length} repos.`);
-    //         });
-    //     });
-    // });
