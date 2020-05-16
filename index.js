@@ -62,16 +62,19 @@ function init() {
     .then( response => {
 
         const queryUrl = `https://api.github.com/users/${response.username}`;
-        console.log(queryUrl);
+        // console.log(queryUrl);
         axios.get(queryUrl)
         .then(function(res){
             avatar = res.data.avatar_url;
 
-            console.log(avatar);
+            // console.log(avatar);
+            
+            const info = generateReadMe(response, avatar)
+                fs.writeFileSync("README.md",info);
+
+            console.log("A ReadMe file has been written.")
         });
 
-        const info = generateReadMe(response, avatar)
-            fs.writeFileSync("README.md",info);
         
     });
     
@@ -119,9 +122,9 @@ function generateReadMe(data, avatar) {
   
   ## Questions
   
-  Please contact ${data.username} at ${data.email} for questions. 
+  Please contact [${data.username}](https://github.com/${data.username}) at ${data.email} for questions. 
 
-  (${avatar})
+  ![github avatar](${avatar})
   
   `
   }

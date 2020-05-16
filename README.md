@@ -1,11 +1,11 @@
 
   
   [![License: ISC](https://img.shields.io/badge/License-ISC-blue.svg)](https://opensource.org/licenses/ISC)
-  # ReadMe Generator
+  # README GENERATOR
   
   ## Description
   
-  This is a ReadMe Generator.
+  This is a README file generator.
   
   ## Table of Contents
   * [Installation](#installation)
@@ -17,11 +17,11 @@
   
   ## Installation
   
-  How to install: installation
+  How to install: This is my method of installation.
   
   ## Usage
   
-  usage
+  ...
   
   ## License
   
@@ -29,16 +29,16 @@
   
   ## Contributing
   
-  Languages Used: JavaScript: Node.js
+  Languages Used: JavaScript, Node.js
   
   ## Tests
   
-  npm test
+  npm tests
   
   ## Questions
   
-  Please contact sharlenemay at sharlenemay@mail.com for questions. 
+  Please contact [sharlenemay](https://github.com/sharlenemay) at sharleneminosa@gmail.com for questions. 
 
-  [!img]()
+  ![github avatar](https://avatars3.githubusercontent.com/u/60161834?v=4)
   
   
